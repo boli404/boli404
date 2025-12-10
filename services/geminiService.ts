@@ -1,6 +1,7 @@
 import { GoogleGenAI } from "@google/genai";
 
-const apiKey = process.env.API_KEY || '';
+// Safely retrieve API key, handling environments where 'process' might be undefined (browser)
+const apiKey = (typeof process !== 'undefined' && process.env && process.env.API_KEY) || '';
 
 // Safely initialize the client only if key is present to avoid immediate crash,
 // though standard practice assumes env is valid.
